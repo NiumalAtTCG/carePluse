@@ -14,7 +14,7 @@ import model.User_Bean;
  */
 public class DashboardAdmin extends javax.swing.JFrame {
 
-    private Doct_Table doc_Table;
+    private RegisterForm doc_Table;
     private User_Bean user_Bean;
 
     public void setUserBean(User_Bean ub) {
@@ -33,7 +33,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
 
     public void addDoc_Table() {
         if (doc_Table == null) {
-            this.setDoc_Table(new Doct_Table(this));
+            this.setDoc_Table(new RegisterForm(this));
             jPanel1.add(doc_Table, BorderLayout.CENTER);
             SwingUtilities.updateComponentTreeUI(jPanel1);
 
@@ -65,6 +65,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         logo_md = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         separator = new javax.swing.JLabel();
@@ -140,6 +141,11 @@ public class DashboardAdmin extends javax.swing.JFrame {
         logo_md.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardUiComponents/Logo_Med.png"))); // NOI18N
         getContentPane().add(logo_md, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel21.setText("ADMIN DASHBOARD");
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 116, -1, 30));
+
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(51, 51, 51));
         jLabel20.setText("New Appointment");
@@ -179,8 +185,9 @@ public class DashboardAdmin extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("User");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(796, 30, 140, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardUiComponents/profile_1.png"))); // NOI18N
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
@@ -276,6 +283,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -289,7 +297,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel sidebar;
     // End of variables declaration//GEN-END:variables
 
- private void setDoc_Table(Doct_Table doc_Table) {
+ private void setDoc_Table(RegisterForm doc_Table) {
         this.doc_Table = doc_Table;
     }
 }

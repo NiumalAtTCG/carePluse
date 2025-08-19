@@ -10,24 +10,25 @@ import javax.swing.JOptionPane;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-
 /**
  *
  * @author User
  */
-public class Doct_Table extends javax.swing.JPanel {
-     private static final HashMap<String, String> specialistatMap = new HashMap<>();
-    private  DashboardAdmin dashboardAdmin;
+public class RegisterForm extends javax.swing.JPanel {
+
+    private static final HashMap<String, String> specialistatMap = new HashMap<>();
+    private DashboardAdmin dashboardAdmin;
 
     /**
      * Creates new form Doctor_Regi
      */
-    public Doct_Table(DashboardAdmin dashboardAdmin) {
-        this.dashboardAdmin=dashboardAdmin;
+    public RegisterForm(DashboardAdmin dashboardAdmin) {
+        this.dashboardAdmin = dashboardAdmin;
         initComponents();
         RollList();
     }
-private void RollList() {
+
+    private void RollList() {
         try {
             ResultSet resultset = MySQL.execute("SELECT * FROM `user_role`");
             Vector<String> vector = new Vector<>();
@@ -38,30 +39,31 @@ private void RollList() {
             }
             DefaultComboBoxModel model1 = new DefaultComboBoxModel(vector);
             spe_ComboBox1_tx.setModel(model1);
-            
+
         } catch (Exception e) {
         }
-   
+
         f_name_tx.setBackground(new java.awt.Color(0, 0, 0, 1));
         l_name_tx.setBackground(new java.awt.Color(0, 0, 0, 1));
-       
+
         mobile_tx.setBackground(new java.awt.Color(0, 0, 0, 1));
-       
+
         username_tx.setBackground(new java.awt.Color(0, 0, 0, 1));
         PasswordField_tx.setBackground(new java.awt.Color(0, 0, 0, 1));
         spe_ComboBox1_tx.setBackground(new java.awt.Color(0, 0, 0, 1));
     }
-private void reset() {
+
+    private void reset() {
         f_name_tx.setText("");
         l_name_tx.setText("");
         mobile_tx.setText("");
         PasswordField_tx.setText("");
-    
+
         username_tx.setText("");
-       
-     
+
         spe_ComboBox1_tx.setSelectedIndex(0);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -142,10 +144,14 @@ private void reset() {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AdminUiComponents/back_btn.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AdminUiComponents/bg3.png"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(780, 420));
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -163,10 +169,10 @@ private void reset() {
         String lname = l_name_tx.getText();
         String mobile = mobile_tx.getText();
         String password = String.valueOf(PasswordField_tx.getPassword());
-   
+
         String username = username_tx.getText();
         String specialist = String.valueOf(spe_ComboBox1_tx.getSelectedItem());
-        
+
         if (fname.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Enter  First Name", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (lname.isEmpty()) {
@@ -179,19 +185,26 @@ private void reset() {
             JOptionPane.showMessageDialog(this, "Enter  username", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Enter  Password", "Warning", JOptionPane.WARNING_MESSAGE);
-        }   else if (specialist.isEmpty()) {
+        } else if (specialist.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please Select Specialist At", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
                 MySQL.execute("INSERT INTO `user` (`fname`, `lname`, `mobile`, `username`, `password`, `user_role_id`)\n"
                         + "VALUES ('" + fname + "', '" + lname + "', '" + mobile + "', '" + username + "', '" + password + "', '" + specialistatMap.get(specialist) + "');");
                 reset();
-//              Register_Successfully_info Rsi =new Register_Successfully_info();
+
+                Successfull_Alert successfull_Alert = new Successfull_Alert();
+                successfull_Alert.Alert_success_txt.setText("REGISTER SUCCESSFULL..!");
+                successfull_Alert.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

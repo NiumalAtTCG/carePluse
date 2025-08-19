@@ -42,6 +42,7 @@ jLabel11.setText("<html>MR : &nbsp;&nbsp " + user_Bean.getFname() + "</html>");
 
         logo_md = new javax.swing.JLabel();
         separator = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         Sidebarlable = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -74,6 +75,11 @@ jLabel11.setText("<html>MR : &nbsp;&nbsp " + user_Bean.getFname() + "</html>");
 
         separator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardUiComponents/headderdivider.png"))); // NOI18N
         getContentPane().add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel21.setText("PHARMACY DASHBOARD");
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 118, -1, 30));
 
         Sidebarlable.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         Sidebarlable.setForeground(new java.awt.Color(51, 51, 51));
@@ -155,8 +161,9 @@ jLabel11.setText("<html>MR : &nbsp;&nbsp " + user_Bean.getFname() + "</html>");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("User");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(796, 30, 140, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DashboardUiComponents/profile_1.png"))); // NOI18N
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
@@ -234,6 +241,7 @@ jLabel11.setText("<html>MR : &nbsp;&nbsp " + user_Bean.getFname() + "</html>");
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
