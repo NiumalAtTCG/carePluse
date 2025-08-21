@@ -1,11 +1,14 @@
 package view;
 
-import auth.AuthManager;
+
+import auth.SessionManager;
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.JOptionPane;
 import model.MySQL;
 import java.sql.ResultSet;
 import model.User_Bean;
+import model.User;
+import model.UserFactory;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -94,7 +97,7 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Enter your password", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-               
+
                 ResultSet resultSet = MySQL.execute(
                         "SELECT * FROM user WHERE username='" + username + "' AND password='" + password + "'"
                 );
@@ -112,13 +115,33 @@ public class Main extends javax.swing.JFrame {
                     user_Bean.setLname(lname);
                     user_Bean.setRoleId(roleId);
 
-                    // ✅ Use Chain of Responsibility to open the correct dashboard based on role
-                    AuthManager authManager = new AuthManager();
-                    authManager.processLogin(user_Bean);
-// The chain will automatically find the correct handler and open the right dashboard.
-                    this.dispose(); // close login window
+                    User currentUser = UserFactory.createDecoratedUser(user_Bean);
 
-                
+                    SessionManager.setCurrentUser(currentUser);
+
+                    switch (roleId) {
+                        case 1:
+                            DashboardAdmin adminDashboard = new DashboardAdmin();
+                             adminDashboard.setUserBean(user_Bean);
+                            adminDashboard.setVisible(true);
+                            break;
+                        case 2:
+                            DashboardDoctor doctorDashboard = new DashboardDoctor();
+                            doctorDashboard.setUserBean(user_Bean);
+                            doctorDashboard.setVisible(true);
+                            break;
+                       case 3:
+                            DashboardPharmacy pharmacyDashboard = new DashboardPharmacy();
+                            pharmacyDashboard.setUserBean(user_Bean);
+                            pharmacyDashboard.setVisible(true);
+                            break;
+                              case 4:
+                            DashboardDoctor nurseDashboard = new DashboardDoctor();
+                            nurseDashboard.setUserBean(user_Bean);
+                            nurseDashboard.setVisible(true);
+                            break;
+                    }
+                    this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Invalid username or password", "Error", JOptionPane.ERROR_MESSAGE);
                 }
